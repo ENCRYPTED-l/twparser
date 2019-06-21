@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:style="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>PARSER</title>
+
+    <style>
+        .content {
+        width: 500px;
+        height: 60px;
+        left: auto;
+        margin: inherit;
+        border: 4px double black;
+        font-size: 11pt;
+        position: relative;
+        overflow: auto;
+        }
+    .content:hover{
+        transform: scale(1.3);
+        animation: shadow 1s infinite alternate;}
+
+    .link {
+    width: max-content;
+    height: auto;
+    left: 70%;
+    border: 4px double black;
+    font-size: 11pt;
+    position: relative;
+    margin: 58.7px;}
+
+    .idl {
+    width: max-content;
+    height: auto;
+    left: 70%;
+    border: 4px double black;
+    font-size: 11pt;
+    position: relative;
+    margin: 58.7px;
+    top: -8px;
+
+    }
+
+    .time{
+    width: max-content;
+    height: auto;
+    left: 70%;
+    border: 4px double black;
+    font-size: 11pt;
+    position: relative;
+    margin: 58.7px;
+    }
+
+
+
+    @keyframes shadow {
+     from {
+        box-shadow: 0 0 55px 10px white;
+     }
+     to {
+        box-shadow: 0 0 90px 20px white;
+     }
+
+     @keyframes move {
+     from {
+        left: 50%;
+     }
+     to {
+        left: 5%;
+     }
+
+</style>
+
+</head>
+<body style="background-color: gray">
+
+<form method="POST">
+    <input name="text">
+    <input type="submit">
+</form>
+
+
+<ul style="left:1%; top:25px; right: 50%; width: 500px; position: absolute;">
+{% for item in data %}
+    <li class="content" onclick=info()>{{item}}</li>
+{% endfor %}
+</ul>
+
+
+<ul style="
+    left: 40%;
+    top:25px;
+    right: auto;
+    width: 1px;
+    position: absolute;
+">
+{% for links in link %}
+
+    <li id = "link" class="link" > {% if links != "None" %}<a href="{{ links }}"> {{links}} </a> {% endif %}</li>
+
+{% endfor %}
+    </ul>
+
+<ul style="
+    left: 40%;
+    top:1px;
+    right: auto;
+    width: 1px;
+    position: absolute;
+">
+{% for ids in id %}
+
+    <li id = "idl" class="idl"> <a href=http://twitter.com/{{ids}}> {{ids}} </a> </li>
+
+{% endfor %}
+    </ul>
+
+<ul style="
+    left: 60%;
+    top:10px;
+    right: auto;
+    width: 1px;
+    position: absolute;
+">
+{% for times in time %}
+    <li id = "time" class="time" style="background-color:black; color: white;">{{times}}</li>
+{% endfor %}
+    </ul>
+
+</body>
+</html>
